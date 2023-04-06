@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .models import User
+# from .models import User
 
 
 def login_view(request):
@@ -8,15 +8,12 @@ def login_view(request):
     # u = User.objects.get(username='farklyzz')
     # u.set_password('47721.GsP')
     # u.save()
-
-
-
     context = dict()
 
     if request.method == "POST":
-        username = request.POST.get('usermail')
-        password = request.POST.get('userpassword')
-        user = authenticate(request, email=username, password=password)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
         print(username, password)
         print(user)
         if user is not None:

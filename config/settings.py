@@ -140,13 +140,14 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Şimdi bu User modeli Django'nun tanıması gerekiyor AUTH_USER_MODEL kullanılır.
-AUTH_USER_MODEL = 'user_profile.User'
+# AUTH_USER_MODEL = 'user_profile.User'
 # appname.ModelName
 
 
 # Yapılacaklar:::
 
-# TODO: Login
+# DONE: Login
+# TODO: Logout
 # TODO: Signup / Avatar* / user_slug* / one_to_one* / profile*
 # TODO: Reset Password
 # TODO: User Avatar, Instagram Account, user_slug(first_name, last_name)
