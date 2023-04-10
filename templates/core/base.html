@@ -11,9 +11,16 @@
 </head>
 
 <body>
+    <!-- Alert Messages -->
+    {% include 'core/messages.html' %}
+    <!-- Alert Messages End -->
+    
     <!-- Navbar -->
     {% include 'core/navbar.html' %}
     <!-- Navbar End -->
+
+    {% block content %}
+    {% endblock content %}
 
     <!-- HERO -->
     <div class="bg-warning border-bottom border-dark">
