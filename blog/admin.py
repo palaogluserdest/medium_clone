@@ -1,9 +1,18 @@
 from django.contrib import admin
-from .models import Post
+from .models import BlogPost, Category, Tag
 
 
-class PostAdmin(admin.ModelAdmin):
+class BlogPostAdmin(admin.ModelAdmin):
    pass
 
 
-admin.site.register(Post, PostAdmin,)
+class CategoryAdmin(admin.ModelAdmin):
+   pass
+
+
+class TagAdmin(admin.ModelAdmin):
+   pass
+
+admin.site.register(BlogPost, BlogPostAdmin,)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)

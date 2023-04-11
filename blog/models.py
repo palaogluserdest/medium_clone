@@ -47,7 +47,7 @@ class Tag(BaseModel):
     #     )
 
 
-class Post(BaseModel):
+class BlogPost(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = HTMLField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)

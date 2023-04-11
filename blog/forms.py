@@ -1,11 +1,13 @@
 from django import forms
-from .models import Post
+from tinymce.widgets import TinyMCE
+from .models import BlogPost
 
-class PostModelForm(forms.ModelForm):
+class BlogPostModelForm(forms.ModelForm):
    
-    tag = forms.CharField()
+    tag = forms.CharField(required=False)
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 40, 'rows': 20}))
     class Meta:
-        model = Post
+        model = BlogPost
         fields = [
             'title',
             'content',

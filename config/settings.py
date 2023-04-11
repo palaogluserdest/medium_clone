@@ -47,7 +47,11 @@ MY_APPS =[
     'user_profile',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'tinymce', # En önce yüklenmesi gerekiyor
+    'crispy_forms',
+    'crispy_bootstrap5',
+]
 
 INSTALLED_APPS = BASE_APPS + MY_APPS + THIRD_PARTY_APPS
 
@@ -139,10 +143,15 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
+
+# Crispy Forms:
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Şimdi bu User modeli Django'nun tanıması gerekiyor AUTH_USER_MODEL kullanılır.
 # AUTH_USER_MODEL = 'user_profile.User'

@@ -30,5 +30,6 @@ urlpatterns = [
     # Blog:
     path('blog/', include('blog.urls', namespace='blog')),
 
-    # Kullanici:
+    # Tinymce Text Editor:
+    path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
