@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = [
     'tinymce', # En önce yüklenmesi gerekiyor
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_extensions',
 ]
 
 INSTALLED_APPS = BASE_APPS + MY_APPS + THIRD_PARTY_APPS
