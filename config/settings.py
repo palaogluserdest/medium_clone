@@ -56,7 +56,7 @@ THIRD_PARTY_APPS = [
     'easy_thumbnails',
 ]
 
-INSTALLED_APPS = BASE_APPS + MY_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = BASE_APPS + THIRD_PARTY_APPS  + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
