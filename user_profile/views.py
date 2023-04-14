@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
 from slugify import slugify
+from blog.models import BlogPost
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -85,3 +86,5 @@ def logout_view(request):
         request, f'{request.user.username} Başarıyla çıkış yaptınız')
     logout(request)
     return redirect('home_view')
+
+

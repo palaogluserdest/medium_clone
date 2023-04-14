@@ -16,5 +16,4 @@ urlpatterns = [
     #Log out:
     path('logout/', logout_view, name='logout_view'),
 
-
 ]

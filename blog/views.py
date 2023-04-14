@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import BlogPostModelForm
 from .models import Category, Tag, BlogPost
@@ -17,9 +18,12 @@ def create_blog_post_view(request):
             f.save()
             tags = json.loads(form.cleaned_data.get('tag')) # bu şekilde yapıyı str formatından çıkardık
             for item in tags:
-                tag_item, created = Tag.objects.get_or_create(title=item.get('value'))
+                tag_item, created = Tag.objects.get_or_create(title=item.get('value').lower())
                 f.tag.add(tag_item)
-
+            messages.success(request, 'Blog postunuz başarıyla kayıt edildi...')
+            return redirect('home_view')
+        else:
+            messages.info(request, 'Hata dolayısıyla blog postunuzun kaydı gerçekleştirelemedi.')
     context = dict(
         form=form,
     )
