@@ -23,28 +23,28 @@ class Category(BaseModel):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse(
-    #         # Buradaki adlandırma path kısmında verilen name bilgisdir.
-    #         'blog:category_view',
-    #         kwargs={
-    #             "category_slug": self.slug
-    #         }
-    #     )
+    def get_absolute_url(self):
+        return reverse(
+            # Buradaki adlandırma path kısmında verilen name bilgisdir.
+            'blog:category_view',
+            kwargs={
+                "category_slug": self.slug
+            }
+        )
 
 
 class Tag(BaseModel):
-   
+
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse(
-    #         'blog:tag_view',
-    #         kwargs={
-    #             "tag_slug": self.slug
-    #         }
-    #     )
+    def get_absolute_url(self):
+        return reverse(
+            'blog:tag_view',
+            kwargs={
+                "tag_slug": self.slug
+            }
+        )
 
 
 class BlogPost(BaseModel):
@@ -53,20 +53,19 @@ class BlogPost(BaseModel):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     tag = models.ManyToManyField(Tag,)
     cover_image = models.ImageField(upload_to='post')
-    count=models.PositiveBigIntegerField(default=0)
-    
+    view_count = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         ordering = ('-created_at',)
 
-    # def get_absolute_url(self):
-    #     return reverse(
-    #             'blog:post_detail_view',
-    #         kwargs={
-    #             "category_slug": self.category.slug,
-    #             "post_slug": self.slug
-    #         }
-    #     )
+    def get_absolute_url(self):
+        return reverse(
+            'read:post_detail_view',
+            kwargs={
+                "user_slug": self.user.profile.slug,
+                "post_slug": self.slug
+            }
+        )

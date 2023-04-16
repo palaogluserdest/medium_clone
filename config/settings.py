@@ -156,7 +156,7 @@ THUMBNAIL_ALIASES = {
         'avatar': {'size': (30, 30), 'crop': True},
         'avatar2x': {'size': (60, 60), 'crop': True},
         'thumbnail': {'size': (400, 300), 'crop': True},
-        'page': {'size': (800, 450), 'crop': True},
+        'page': {'size': (1000, 300), 'crop': True},
     },
 }
 
@@ -173,16 +173,16 @@ THUMBNAIL_ALIASES = {
 # Yapılacaklar:::
 
 # DONE: Login
-# TODO: Logout
-# TODO: Signup / Avatar* / user_slug* / one_to_one* / profile*
+# DONE: Logout
+# DONE: Signup / Avatar* / user_slug* / one_to_one* / profile*
 # TODO: Reset Password
 # TODO: User Avatar, Instagram Account, user_slug(first_name, last_name)
-# TODO: Blog App
-# TODO: Post(Login olan kullanıcı)
-# TODO: User tag oluşturabilir / Kullanıcı Tag bilgilerini virgülle ayırarak göndericek
+# DONE: Blog App
+# DONE: Post(Login olan kullanıcı)
+# DONE: User tag oluşturabilir / Kullanıcı Tag bilgilerini virgülle ayırarak göndericek
 # TODO: Populer olanlar / En çok okunanlar
 # TODO: User Fav
-# TODO: Page App model yapısı / Admin
+# DONE: Page App model yapısı / Admin
 # TODO: 
 # TODO:
 # TODO:

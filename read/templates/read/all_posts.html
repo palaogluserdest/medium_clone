@@ -4,12 +4,29 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8 offset-sm-2 mt-5">
-            <h2>{{ profile.user }}</h2>
+
+            {% if category %}
+            <h2>K: {{ category.title|upper }}</h2>
+            {% elif tag %}
+            <h2>T: {{ tag.title|upper }}</h2>
+            {% endif %}
+
         </div>
         <div class="col-sm-8 offset-sm-2 mt-5">
-            {% for post in posts %}
-            {% include 'blog/components/post.html' %}
-            {% endfor %}
+            {% if category %}
+                {% with posts=category.blogpost_set.all %}
+                    {% for post in posts %}
+                        {% include 'blog/components/post.html' %}
+                    {% endfor %}
+                {% endwith %}
+            {% else %}
+                {% with posts=tag.blogpost_set.all %}
+                    {% for post in posts %}
+                        {% include 'blog/components/post.html' %}
+                    {% endfor %}
+                {% endwith %}
+            {% endif %}
+
         </div>
     </div>
 </div>

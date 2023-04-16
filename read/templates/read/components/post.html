@@ -1,18 +1,21 @@
 {% load thumbnail %}
 <article class="row mb-3">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
+        <img src="{{ post.cover_image|thumbnail_url:'page' }}" alt="" class="w-100 img-thumbnail">
+    </div>
+    <div class="col-sm-8 offset-sm-2">
+        <h3 class="mt-2">{{ post.title }}</h3>
+        <p class="text-muted">
+            {{ post.content|safe}}
+        </p>
+        <hr>
         <div>
             <a href="{{ post.user.profile.get_absolute_url  }}" class="text-decoration-none text-muted">
                 <img src="https://picsum.photos/id/212/30/30?grayscale" class="rounded-circle" alt="">
                 <small class="ms-2">{{ post.user.get_full_name }}</small>
             </a>
         </div>
-        <h3 class="mt-2">
-            <a href="{{ post.get_absolute_url }}" class="text-decoration-none text-muted">{{ post.title }}</a>
-        </h3>
-        <p class="text-muted">
-            {{ post.content|safe|truncatewords_html:20 }}
-        </p>
+        <hr>
         <ul class="list-inline">
             <li class="list-inline-item fs-12">Sep 30</li>
             <li class="list-inline-item fs-12">
@@ -23,9 +26,7 @@
             </li>
             <li class="list-inline-item fs-12">
                 <span class="badge bg-secondary">
-                <a href="{{ post.category.get_absolute_url }}" class="text-decoration-none text-white">
-                    {{ post.category }}
-                </a>    
+                    <a href="{{ post.category.get_absolute_url }}" class="text-decoration-none text-white">{{ post.category }}</a>
                 </span>
             </li>
             <li class="list-inline-item fs-12 float-end">
@@ -38,9 +39,16 @@
                 </svg>
             </li>
         </ul>
+        <hr>
+        <ul class="list-inline mt-3">
+            {% for tag in post.tag.all %}
+                <li class="list-inline-item">
+                    <a href="{{ tag.get_absolute_url }}" class="text-decoration-none text-muted fs-14">{{ tag.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <hr>
     </div>
-    <div class="col-sm-4">
-        <img src="{{ post.cover_image|thumbnail_url:'thumbnail' }}" alt="" class="w-100 img-thumbnail">
-    </div>
+    
 
 </article>
