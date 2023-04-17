@@ -8,6 +8,7 @@ import json
 
 @login_required(login_url='user_profile:login_view')
 def create_blog_post_view(request):
+    title = 'Yeni Blog Post'
     form = BlogPostModelForm()
     if request.method == "POST":
         form = BlogPostModelForm(request.POST or None, request.FILES or None)
@@ -26,8 +27,9 @@ def create_blog_post_view(request):
             messages.info(request, 'Hata dolayısıyla blog postunuzun kaydı gerçekleştirelemedi.')
     context = dict(
         form=form,
+        title=title,
     )
-    return render(request, 'blog/create_blog_post.html', context)
+    return render(request, 'common_components/form.html', context)
 
 
 def category_view(request, category_slug):

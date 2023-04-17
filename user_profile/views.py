@@ -1,10 +1,41 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
 from slugify import slugify
 from blog.models import BlogPost
+from .forms import ProfileModelForm
+
+
+@login_required(login_url='user:login_view')
+def profile_edit_view(request):
+    user = request.user
+    initial_data = dict(
+        first_name = user.first_name,
+        last_name = user.last_name,
+    )
+    form = ProfileModelForm(instance=user.profile, initial=initial_data)
+    if request.method == 'POST':
+        form = ProfileModelForm(request.POST or None, request.FILES or None, instance=user.profile)
+        if form.is_valid():
+            f = form.save(commit=False)
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.save()
+            f.save()
+            messages.success(request, 'Profiliniz güncellendi...')
+            return redirect('user_profile:profile_edit_view')
+
+    title = 'Profili Düzenle'
+    context = dict(
+        form=form,
+        title=title,
+    )
+    return render(request, 'common_components/form.html', context)
+
+
 
 def login_view(request):
     if request.user.is_authenticated:

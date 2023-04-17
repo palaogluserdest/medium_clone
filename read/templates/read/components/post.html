@@ -10,8 +10,8 @@
         </p>
         <hr>
         <div>
-            <a href="{{ post.user.profile.get_absolute_url  }}" class="text-decoration-none text-muted">
-                <img src="https://picsum.photos/id/212/30/30?grayscale" class="rounded-circle" alt="">
+            <a href="{{ post.user.profile.get_all_posts_url  }}" class="text-decoration-none text-muted">
+                <img src="{{ post.user.profile.avatar|thumbnail_url:'avatar' }}" class="rounded-circle" alt="">
                 <small class="ms-2">{{ post.user.get_full_name }}</small>
             </a>
         </div>
@@ -43,11 +43,10 @@
         <ul class="list-inline mt-3">
             {% for tag in post.tag.all %}
                 <li class="list-inline-item">
-                    <a href="{{ tag.get_absolute_url }}" class="text-decoration-none text-muted fs-14">{{ tag.title }}</a>
+                    <a class="badge bg-secondary text-decoration-none text-white py-2" href="{{ tag.get_absolute_url }}" role="button">{{ tag.title }}</a>
                 </li>
             {% endfor %}
         </ul>
-        <hr>
     </div>
     
 
